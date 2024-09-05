@@ -57,7 +57,29 @@ namespace dao
             }
         }
 
-        
+        public void UpdateTable(string name, object row)
+        {
+            switch (name)
+            {
+                case "product":
+                    for (int i = 0; i < productTable.Count; i++)
+                    { if (productTable[i] == row)
+                            productTable[i] = (Product)row;
+                    }
+                    return;
+                default: throw new ArgumentException("Invalid table name");
+            }
+        }
+
+        public void UpdateTableById(int id, object row)
+        {
+            switch (id)
+            {
+                 
+
+                default: throw new ArgumentException("Invalid table name");
+            }
+        }
 
         public void TruncateTable(string name)
         {
