@@ -46,7 +46,7 @@ namespace demo
         public void UpdateTableTest()
         {
             db.UpdateTable("product", new Product(2, "Product editted", 3));
-            
+            db.UpdateTableById(3, new Accessory(2, "Accessory new"));
         }
 
         public void DeleteTableTest()
