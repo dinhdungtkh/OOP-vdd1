@@ -25,11 +25,11 @@ namespace demo
 
         public void InsertTableTest()
         {
-            var newProduct = new { id = 5, name = "New Product" , categoryId = 3 };
+            var newProduct = new { id = 5, name = "New Product", categoryId = 3 };
             int index = db.InsertTable("product", newProduct);
-           Console.WriteLine( newProduct.id +" " +  newProduct.name +" "+newProduct.categoryId);
-           Console.WriteLine($"Inserted Product at index: {index}");
-           
+            Console.WriteLine(newProduct.id + " " + newProduct.name + " " + newProduct.categoryId);
+            Console.WriteLine($"Inserted Product at index: {index}");
+
         }
 
         public void SelectTableTest()
@@ -45,13 +45,14 @@ namespace demo
 
         public void UpdateTableTest()
         {
-            db.UpdateTable("product", new Product(2, "Product editted" , 3));
+            db.UpdateTable("product", new Product(2, "Product editted", 3));
             
         }
 
         public void DeleteTableTest()
         {
-
+            db.DeleteTable("product", new Product(1));
+            // db.DeleteTable("product", new Product(1, "Product 1"));
         }
 
         public void TruncateTableTest()
@@ -97,6 +98,17 @@ namespace demo
             }
         }
 
+        public static void Main(string[] args)
+        {
 
+            DatabaseDemo databaseDemo = new DatabaseDemo();
+            databaseDemo.InitDatabase();
+            databaseDemo.InsertTableTest();
+            databaseDemo.UpdateTableTest();
+            databaseDemo.DeleteTableTest(); ;
+            databaseDemo.SelectTableTest();
+            databaseDemo.TruncateTableTest();
+            databaseDemo.SelectTableTest();
+        }
     }
 }

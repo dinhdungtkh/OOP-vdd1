@@ -16,7 +16,11 @@ namespace OOP_dung.vd.enitity
             id = ID;
             name = Name;
         }
-   
+
+        public Product(int ID)
+        {
+            id = ID;
+        }
         public string GetProductInfo()
         {
             return $"{id}: {name} - {categoryId}";

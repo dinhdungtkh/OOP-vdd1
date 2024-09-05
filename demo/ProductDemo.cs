@@ -14,13 +14,13 @@ namespace demo
         {
             Console.WriteLine(product.GetProductInfo());
         }
-        public static void Main(string[] args)
-        {
-            ProductDemo productDemo = new ProductDemo();
-            Product product = new Product(1, "TokyhaProductDemo", 10000);
-            productDemo.PrintProduct(product);
+        //public static void Main(string[] args)
+        //{
+        //    ProductDemo productDemo = new ProductDemo();
+        //    Product product = new Product(1, "TokyhaProductDemo", 10000);
+        //    productDemo.PrintProduct(product);
             
-        }
+        //}
 
     }
 }
