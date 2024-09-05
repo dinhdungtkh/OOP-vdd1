@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OOP_dung.vd.enitity;
+
 
 namespace dao
 {
     public class Database
     {
-        private static List<Product> productTable = new List<Product>();
+       // private static List<Product> productTable = new List<Product>();
+        public List<Product> productTable = new List<Product>();
         public static List<Category> categoryTable = new List<Category>();
         public List<Accessory> accessoryTable = new List<Accessory>();
 
@@ -26,24 +29,24 @@ namespace dao
 
         public int InsertTable(string name, object row)
         {
-             switch (name) 
-             {  
-                case "product" :
-                     productTable.Add(row as Product);
-                       return productTable.Count-1; 
-                case "category" :
-                       categoryTable.Add(row as Category); 
-                       return categoryTable.Count-1;
-                case "accessory" :
+            switch (name)
+            {
+                case "product":
+                    productTable.Add(row as Product);
+                    return productTable.Count;
+                case "category":
+                    categoryTable.Add(row as Category);
+                    return categoryTable.Count;
+                case "accessory":
                     accessoryTable.Add(row as Accessory);
-                    return accessoryTable.Count-1;   
+                    return accessoryTable.Count;
                 default:
-                    throw new ArgumentException("Invalid table name");    
-             }
+                    throw new ArgumentException("Invalid table name");
+            }
         }
-        
+
         public dynamic SelectTable(string name)
-        {   
+        {
             switch (name)
             {
                 case "product":
@@ -62,11 +65,9 @@ namespace dao
             switch (name)
             {
                 case "product":
-                    for (int i = 0; i < productTable.Count; i++)
-                    { if (productTable[i] == row)
-                            productTable[i] = (Product)row;
-                    }
-                    return;
+
+                    break;
+
                 default: throw new ArgumentException("Invalid table name");
             }
         }
@@ -75,7 +76,6 @@ namespace dao
         {
             switch (id)
             {
-                 
 
                 default: throw new ArgumentException("Invalid table name");
             }

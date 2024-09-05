@@ -1,4 +1,5 @@
-using System;
+using OOP_dung.vd.enitity;
+
 namespace demo
 {
     public class ProductDemo
@@ -6,12 +7,20 @@ namespace demo
 
         public void createProductest()
         {
-            Product product = new Product(1, "TokyhaProductDemo", 10000);
+            Product product = new Product(1, "TokyhaProductDemo ", 10000);
         }
 
         public void PrintProduct(Product product)
         {
             Console.WriteLine(product.GetProductInfo());
         }
+        public static void Main(string[] args)
+        {
+            ProductDemo productDemo = new ProductDemo();
+            Product product = new Product(1, "TokyhaProductDemo", 10000);
+            productDemo.PrintProduct(product);
+            
+        }
+
     }
 }

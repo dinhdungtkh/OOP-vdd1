@@ -1,17 +1,13 @@
 using System;
-
-public class Accessory
+namespace OOP_dung.vd.enitity
 {
-	public int id;
-	public string name; 
+    public class Accessory : Base 
+    {
+        public Accessory(int _id, string _name)
+        {
+            id = _id;
+            name = _name;
+        }
 
-	public Accessory ( int _id, string _name ) {
-		id = _id;
-		name = _name;
-	}
-
-   public int getId() { return id; }
-   public void  setId(int _id) { id = _id; }
-
-
+    }
 }

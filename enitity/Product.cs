@@ -1,35 +1,28 @@
-using System;
-
-
-public class Product {
-  public int id;
-  public string name;
-  public int categoryId;
-
-    public Product(int ID, string Name)
+namespace OOP_dung.vd.enitity
+{
+  public class Product : Base
     {
-        id = ID;
-        name = Name;
+        public int categoryId {  get; set; }
+
+        public Product(int ID, string Name, int CategoryID)
+        {
+            id = ID;
+            name = Name;
+            categoryId = CategoryID;
+        }
+         
+        public Product(int ID, string Name)
+        {
+            id = ID;
+            name = Name;
+        }
+   
+        public string GetProductInfo()
+        {
+            return $"{id}: {name} - {categoryId}";
+        }
+
+
+
     }
-    public Product(int ID, string Name, int CategoryID)
-    {
-        id = ID;
-        name = Name;
-        categoryId = CategoryID;
-    }
-
-  public void setId(int _id) {
-     this.id = _id;
-  }
-
-  public int getId(){
-    return id;
-  }
-
-  public string GetProductInfo() {
-        return $"{id}: {name} - {categoryId}"; 
-    } 
-  
-  
-
 }
