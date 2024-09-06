@@ -11,11 +11,21 @@ namespace OOP_dung.vd.dao
         {
             db = Database.Instants;
         }
+        /// <summary>
+        /// Deletes an Accessory from the database.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
         public override bool Delete(Accessory row)
         {
             return db.DeleteTable(tableName.accessory, row);
         }
 
+        /// <summary>
+        /// Finds an Accessory by its ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public override Accessory FindById(int id)
         {
             var accessoryID = db.SelectTable(tableName.accessory);
@@ -30,18 +40,27 @@ namespace OOP_dung.vd.dao
             }
             return null;
         }
-
+        /// <summary>
+        /// Finds all Accessories in the database.
+        /// </summary>
+        /// <returns></returns>
         public override List<Accessory> FindAll()
         {
             return db.SelectTable(tableName.accessory);
         }
-
+        /// <summary>
+        /// Inserts a new Accessory into the database.
+        /// </summary>
+        /// <param name="row"></param>
         public override void Insert(Accessory row)
         {
             db.InsertTable(tableName.accessory, row);
         }
 
-
+        /// <summary>
+        /// Updates an existing Accessory in the database.
+        /// </summary>
+        /// <param name="row"></param>
         public override void Update(Accessory row)
         {
             db.UpdateTable(tableName.accessory, row);

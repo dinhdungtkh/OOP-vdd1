@@ -17,7 +17,9 @@ namespace dao
         public List<Category> categoryTable = new List<Category>();
         public List<Accessory> accessoryTable = new List<Accessory>();
 
-        private static Database instance;
+        private static Database instance = null; 
+
+
 
         private static readonly object _lock = new object(); 
         public static Database Instants
@@ -36,7 +38,13 @@ namespace dao
                 return instance;
             }
         }
-
+        /// <summary>
+        /// Inserts a new row into the specified table.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="row"></param>
+        /// <returns>The new count of rows in the table after insertion.</returns>
+        /// <exception cref="ArgumentException"></exception>
         public int InsertTable(tableName name, object row)
         {
 
@@ -55,7 +63,12 @@ namespace dao
                     throw new ArgumentException("Invalid table name");
             }
         }
-
+        /// <summary>
+        /// Selects all rows from the specified table.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>A list of rows from the specified table.</returns>
+        /// <exception cref="ArgumentException"></exception>
         public dynamic SelectTable(tableName name)
         {
             switch (name)
@@ -70,7 +83,12 @@ namespace dao
                     throw new ArgumentException("Invalid table name");
             }
         }
-
+        /// <summary>
+        /// Updates an existing row in the specified table.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="row"></param>
+        /// <exception cref="ArgumentException"></exception>
         public void UpdateTable(tableName name, object row)
         {
             switch (name)
@@ -120,7 +138,12 @@ namespace dao
                 default: throw new ArgumentException("Invalid table name");
             }
         }
-
+        /// <summary>
+        /// Deletes a row from the specified table.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="row"></param>
+        /// <returns>True if the row was deleted /  false if it was not found.</returns>
         public bool DeleteTable(tableName name, object row)
         {
             switch (name)
@@ -176,7 +199,11 @@ namespace dao
 
         }
 
-
+        /// <summary>
+        /// Updates a row by its ID in the specified table.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="row"></param>
         public void UpdateTableById(int id, object row)
         {
 
@@ -219,7 +246,11 @@ namespace dao
 
 
         }
-
+        /// <summary>
+        /// Clears all rows from the specified table
+        /// </summary>
+        /// <param name="name"></param>
+        /// <exception cref="ArgumentException"></exception>
         public void TruncateTable(tableName name)
         {
             switch (name)

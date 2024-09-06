@@ -12,7 +12,9 @@ namespace demo
             db = Database.Instants;
 
         }
-
+        /// <summary>
+        /// Initializes the database with sample Product, Category, and Accessory objects.
+        /// </summary>
         public void InitDatabase()
         {
             for (int i = 0; i < 10; i++)
@@ -22,7 +24,9 @@ namespace demo
                 db.InsertTable(tableName.accessory, new Accessory(i, $"Accessory {i}"));
             }
         }
-
+        /// <summary>
+        /// Tests the insertion of a new Product object into the database and displays the result.
+        /// </summary>
         public void InsertTableTest()
         {
             var newProduct = new { id = 5, name = "New Product", categoryId = 3 };
@@ -31,7 +35,9 @@ namespace demo
             Console.WriteLine($"Inserted Product at index: {index}");
 
         }
-
+        /// <summary>
+        /// Tests retrieving and displaying data from all tables: Product, Category, and Accessory.
+        /// </summary>
         public void SelectTableTest()
         {
             var data = db.SelectTable(tableName.product);
@@ -42,25 +48,36 @@ namespace demo
             PrintTableTest(tableName.category, categorydata);
             PrintTableTest(tableName.accessory, accessorydata);
         }
-
+        /// <summary>
+        /// Tests updating existing Product and Accessory objects in the database.
+        /// </summary>
         public void UpdateTableTest()
         {
             db.UpdateTable(tableName.product, new Product(2, "Product editted", 3));
             db.UpdateTableById(3, new Accessory(2, "Accessory new"));
         }
-
+        /// <summary>
+        /// Tests deleting an existing Product object from the database.
+        /// </summary>
         public void DeleteTableTest()
         {
             db.DeleteTable(tableName.product, new Product(1));
-            // db.DeleteTable(tableName.product, new Product(1, "Product 1"));
+            db.DeleteTable(tableName.product, new Product(2, "Product 2"));
         }
-
+        /// <summary>
+        /// Tests clear all Product table entries.
+        /// </summary>
         public void TruncateTableTest()
         {
             db.TruncateTable(tableName.product);
             Console.WriteLine("Truncated Product table.");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <exception cref="ArgumentException"></exception>
         public void PrintTableTest(tableName name, dynamic data)
         {
             switch (name)

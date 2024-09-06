@@ -18,7 +18,9 @@ namespace OOP_dung.vd.demo
                 db.InsertTable(tableName.accessory, new Accessory(i, $"Accessory {i}"));
             }
         }
-
+        /// <summary>
+        /// Tests the insertion of new Accessory objects into the database and displays the results.
+        /// </summary>
         public void insertTest()
         {
             demoaccessoryDAO.Insert(new Accessory(11, "Accessory 11"));
@@ -27,20 +29,27 @@ namespace OOP_dung.vd.demo
             Console.WriteLine("After Insert:");
             findAllTest();
         }
-
+        /// <summary>
+        /// Tests updating an existing Accessory object in the database and displays the results.
+        /// </summary>
         public void updateTest()
         {
             demoaccessoryDAO.Update(new Accessory(11, "Accessory Updated 11"));
             Console.WriteLine("After Update:");
             findAllTest();
         }
-
+        /// <summary>
+        /// Tests deleting an Accessory object from the database and displays the results.
+        /// </summary>
         public void deleteTest()
         {
             demoaccessoryDAO.Delete(new Accessory(12, "Accessory 13"));
 
         }
-
+        /// <summary>
+        /// Displays all Accessory objects from the database.
+        /// </summary>
+        /// <returns></returns>
         public List<Accessory> findAllTest()
         {
             var accessory = demoaccessoryDAO.FindAll();
@@ -48,6 +57,9 @@ namespace OOP_dung.vd.demo
             return accessory;
         }
 
+        /// <summary>
+        /// Displays an Accessory object by its ID.
+        /// </summary>
         public void findByIdTest()
         {
             Accessory accessory = demoaccessoryDAO.FindById(11);
@@ -60,25 +72,25 @@ namespace OOP_dung.vd.demo
             else Console.WriteLine("Accessory with Id not found");
         }
 
-
+        /// <summary>
+        ///  Prints the details of Accessory objects or throws an exception if the table name is invalid.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <exception cref="ArgumentException"></exception>
 
         public void PrintTableTest(tableName name, dynamic data)
         {
-            switch (name)
+            List<Accessory> dataAccessory = (List<Accessory>)data;
+            Console.WriteLine("-Accessory-");
+            foreach (Accessory accessory in dataAccessory)
             {
-                case tableName.accessory:
-                    List<Accessory> dataAccessory = (List<Accessory>)data;
-                    Console.WriteLine("-Accessory-");
-                    foreach (Accessory accessory in dataAccessory)
-                    {
-                        if (accessory != null)
-                            Console.WriteLine("id: " + accessory.id + " accessory name: " + accessory.name);
-                    }
-                    return;
-                default:
-                    throw new ArgumentException("Invalid table name");
+                if (accessory != null)
+                    Console.WriteLine("id: " + accessory.id + " accessory name: " + accessory.name);
             }
+            return;
         }
+
         /// <summary>
         /// 
         /// </summary>

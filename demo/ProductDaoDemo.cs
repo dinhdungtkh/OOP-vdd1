@@ -19,7 +19,9 @@ namespace OOP_dung.vd.demo
                 db.InsertTable(tableName.product, new Product(i, $"Product {i}"));
             }
         }
-
+        /// <summary>
+        /// Tests the insertion of new Product objects into the database and displays the result.
+        /// </summary>
         public void insertTest()
         {
             demoproductDAO.Insert(new Product(11, "Product new 11 ", 2));
@@ -28,27 +30,36 @@ namespace OOP_dung.vd.demo
             Console.WriteLine("After Insert:");
             findAllTest();
         }
-
+        /// <summary>
+        ///  Tests updating an existing Product object in the database and displays the result.
+        /// </summary>
         public void updateTest()
         {
             demoproductDAO.Update(new Product(11, "Product Updated 11", 2));
             Console.WriteLine("After Update:");
             findAllTest();
         }
-
+        /// <summary>
+        /// Tests deleting an existing Product object from the database.
+        /// </summary>
         public void deleteTest()
         {
             demoproductDAO.Delete(new Product(12, "{Product new 12", 3));
 
         }
-
+        /// <summary>
+        /// Displays all Product objects from the database.
+        /// </summary>
+        /// <returns></returns>
         public List<Product> findAllTest()
         {
             var products = demoproductDAO.FindAll();
             PrintTableTest(tableName.product, products);
             return products;
         }
-
+        /// <summary>
+        /// Tests finding a Product by its ID and displays the result.
+        /// </summary>
         public void findByIdTest()
         {
             Console.WriteLine("Find by id Test ");
@@ -62,7 +73,9 @@ namespace OOP_dung.vd.demo
             }
             else Console.WriteLine("Product with Id not found");
         }
-
+        /// <summary>
+        /// Tests finding a Product by its name and displays the result.
+        /// </summary>
         public void FindByNameTest()
         {
             Console.WriteLine("Find by name Test ");
@@ -82,7 +95,11 @@ namespace OOP_dung.vd.demo
         {
 
         }
-
+        /// <summary>
+        /// Prints the contents of the Product table.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
         public void PrintTableTest(tableName name, dynamic data)
         {
             List<Product> dataProduct = (List<Product>)data;

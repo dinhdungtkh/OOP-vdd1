@@ -64,20 +64,14 @@ namespace demo
 
         public void PrintTableTest(tableName name, dynamic data)
         {
-            switch (name)
+            List<Category> dataCategory = (List<Category>)data;
+            Console.WriteLine("-Category-");
+            foreach (Category category in dataCategory)
             {
-                case tableName.category:
-                    List<Category> dataCategory = (List<Category>)data;
-                    Console.WriteLine("-Category-");
-                    foreach (Category category in dataCategory)
-                    {
-                        if (category != null)
-                            Console.WriteLine("id: " + category.id + " category name: " + category.name);
-                    }
-                    return;
-                default:
-                    throw new ArgumentException("Invalid table name");
+                if (category != null)
+                    Console.WriteLine("id: " + category.id + " category name: " + category.name);
             }
+            return;
         }
 
         //public static void Main(string[] args)
