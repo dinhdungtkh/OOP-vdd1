@@ -16,7 +16,7 @@ namespace dao
         
         // private static List<Product> productTable = new List<Product>();
         public List<Product> productTable = new List<Product>();
-        public static List<Category> categoryTable = new List<Category>();
+        public List<Category> categoryTable = new List<Category>();
         public List<Accessory> accessoryTable = new List<Accessory>();
 
         private static Database instance;

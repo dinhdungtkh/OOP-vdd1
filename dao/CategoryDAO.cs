@@ -1,4 +1,5 @@
 ﻿using OOP_dung.vd.enitity;
+using System.Collections.Immutable;
 
 namespace dao
 {
@@ -22,9 +23,18 @@ namespace dao
             return db.SelectTable(tableName.category);
         }
 
-        public dynamic findById(string name)
+        public Category findById(int id)  
         {
-            throw new ArgumentException("Invalid ID");
+            var categoryID =  db.SelectTable(tableName.category);
+
+            for (int i = 0; i < categoryID.Count; i++) {
+                if (categoryID[i].id == id)
+                {
+                    return categoryID[i];
+                }
+                else return null;
+            }
+            return null;
         }
     }
 }

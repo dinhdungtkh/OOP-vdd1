@@ -30,14 +30,36 @@ namespace OOP_dung.vd.dao
         public List<Product> findAll() { 
         return db.SelectTable(tableName.product);
         }
-        public List<Product> FindById(int id)
-
+        public Product FindById(int id)
         {
 
-            return db.SelectTable(tableName.product);
-            
+            var productID = db.SelectTable(tableName.product);
+
+            for (int i = 0; i < productID.Count; i++)
+            {
+                if (productID[i].id == id)
+                {
+                    return productID[i];
+                }
+                else return null;
+            }
+            return null;
+
         }
-        public void FindByName(string name) { }
+        public Product FindByName(string name) {
+
+            var productID = db.SelectTable(tableName.product);
+
+            for (int i = 0; i < productID.Count; i++)
+            {
+                if (productID[i].name == name)
+                {
+                    return productID[i];
+                }
+                else return null;
+            }
+            return null;
+        }
     }
 }
 
