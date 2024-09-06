@@ -51,6 +51,7 @@ namespace OOP_dung.vd.demo
 
         public void findByIdTest()
         {
+            Console.WriteLine("Find by id Test ");
             Product products = demoproductDAO.FindById(11);
 
             if (products != null)
@@ -64,7 +65,8 @@ namespace OOP_dung.vd.demo
 
         public void FindByNameTest()
         {
-            Product products = demoproductDAO.FindByName("Product Updated 11");
+            Console.WriteLine("Find by name Test ");
+            Product products = demoproductDAO.FindByName("Product new 12 ");
 
             if (products != null)
             {
