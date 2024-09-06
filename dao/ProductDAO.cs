@@ -10,7 +10,7 @@ namespace OOP_dung.vd.dao
         Database db;
         public ProductDAO()
         {
-            db = new Database();
+            db = Database.Instants;
         }
 
 

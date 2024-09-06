@@ -9,7 +9,7 @@ namespace OOP_dung.vd.dao
 
         public AccessoryDAO()
         {
-            db = new Database();
+            db = Database.Instants;
         }
         public override bool Delete(Accessory row)
         {

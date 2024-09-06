@@ -9,7 +9,7 @@ namespace dao
 
         public CategoryDAO()
         {
-            db = new Database();
+            db = Database.Instants;
         }
         public override void Insert(Category row)
         {
