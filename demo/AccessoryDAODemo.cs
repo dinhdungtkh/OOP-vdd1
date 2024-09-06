@@ -1,6 +1,6 @@
 ﻿using dao;
 using OOP_dung.vd.dao;
-using OOP_dung.vd.enitity;
+using OOP_dung.vd.entity;
 
 namespace OOP_dung.vd.demo
 {
@@ -43,14 +43,14 @@ namespace OOP_dung.vd.demo
 
         public List<Accessory> findAllTest()
         {
-            var accessory = demoaccessoryDAO.findAll();
+            var accessory = demoaccessoryDAO.FindAll();
             PrintTableTest(tableName.accessory, accessory);
             return accessory;
         }
 
         public void findByIdTest()
         {
-            Accessory accessory = demoaccessoryDAO.findById(11);
+            Accessory accessory = demoaccessoryDAO.FindById(11);
 
             if (accessory != null)
             {
@@ -79,19 +79,22 @@ namespace OOP_dung.vd.demo
                     throw new ArgumentException("Invalid table name");
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
+        //public static void Main(string[] args)
+        //{
 
-        public static void Main(string[] args)
-        {
+        //    AccessoryDAODemo accessoryDAODemo = new AccessoryDAODemo();
+        //    accessoryDAODemo.insertTest();
+        //    accessoryDAODemo.updateTest();
+        //    accessoryDAODemo.deleteTest();
+        //    accessoryDAODemo.findByIdTest();
+        //    accessoryDAODemo.findAllTest();
+        //    Console.ReadLine();
 
-            AccessoryDAODemo accessoryDAODemo = new AccessoryDAODemo();
-            accessoryDAODemo.insertTest();
-            accessoryDAODemo.updateTest();
-            accessoryDAODemo.deleteTest();
-            accessoryDAODemo.findByIdTest();
-            accessoryDAODemo.findAllTest();
-            Console.ReadLine();
-
-        }
+        //}
 
     }
 }

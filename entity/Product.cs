@@ -1,4 +1,4 @@
-namespace OOP_dung.vd.enitity
+namespace OOP_dung.vd.entity
 {
   public class Product : Base
     {

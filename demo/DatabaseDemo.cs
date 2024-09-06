@@ -1,5 +1,5 @@
 using dao;
-using OOP_dung.vd.enitity;
+using OOP_dung.vd.entity;
 
 namespace demo
 {

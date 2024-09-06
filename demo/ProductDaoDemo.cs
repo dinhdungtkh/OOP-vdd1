@@ -1,6 +1,6 @@
 ﻿using dao;
 using OOP_dung.vd.dao;
-using OOP_dung.vd.enitity;
+using OOP_dung.vd.entity;
 
 namespace OOP_dung.vd.demo
 
@@ -22,29 +22,29 @@ namespace OOP_dung.vd.demo
 
         public void insertTest()
         {
-            demoproductDAO.Insert(new Product(11, "Product new 11 " , 2));
-            demoproductDAO.Insert(new Product(12, "Product new 12 " , 3));
-            demoproductDAO.Insert(new Product(13, "Product new 13 " ,4));
+            demoproductDAO.Insert(new Product(11, "Product new 11 ", 2));
+            demoproductDAO.Insert(new Product(12, "Product new 12 ", 3));
+            demoproductDAO.Insert(new Product(13, "Product new 13 ", 4));
             Console.WriteLine("After Insert:");
             findAllTest();
         }
 
         public void updateTest()
         {
-            demoproductDAO.Update(new Product(11, "Product Updated 11" , 2));
+            demoproductDAO.Update(new Product(11, "Product Updated 11", 2));
             Console.WriteLine("After Update:");
             findAllTest();
         }
 
         public void deleteTest()
         {
-            demoproductDAO.Delete(new Product(12, "{Product new 12" , 3));
+            demoproductDAO.Delete(new Product(12, "{Product new 12", 3));
 
         }
 
         public List<Product> findAllTest()
         {
-            var products = demoproductDAO.findAll();
+            var products = demoproductDAO.FindAll();
             PrintTableTest(tableName.product, products);
             return products;
         }
@@ -77,6 +77,11 @@ namespace OOP_dung.vd.demo
             else Console.WriteLine("Product with Id not found");
         }
 
+        // Search for products with names containing "1"
+        public void searchTest()
+        {
+
+        }
 
         public void PrintTableTest(tableName name, dynamic data)
         {
@@ -89,19 +94,20 @@ namespace OOP_dung.vd.demo
             }
         }
 
-        //public static void Main(string[] args)
-        //{
+        public static void Main(string[] args)
+        {
 
-        //    ProductDaoDemo demo = new ProductDaoDemo();
-        //    demo.insertTest();
-        //    demo.updateTest();
-        //    demo.deleteTest();
-        //    demo.findByIdTest();
-        //    demo.FindByNameTest();
-        //    demo.findAllTest();
-        //    Console.ReadLine();
+            ProductDaoDemo demo = new ProductDaoDemo();
+            demo.insertTest();
+            demo.updateTest();
+            demo.deleteTest();
+            demo.findByIdTest();
+            demo.FindByNameTest();
+            demo.findAllTest();
+            demo.searchTest();
+            Console.ReadLine();
 
-        //}
+        }
 
     }
 }

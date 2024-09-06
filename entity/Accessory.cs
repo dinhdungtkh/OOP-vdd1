@@ -1,5 +1,5 @@
 using System;
-namespace OOP_dung.vd.enitity
+namespace OOP_dung.vd.entity
 {
     public class Accessory : Base 
     {
@@ -7,6 +7,10 @@ namespace OOP_dung.vd.enitity
         {
             id = _id;
             name = _name;
+        }
+        public string GetAccessoryInfo()
+        {
+            return $"{id}: {name}";
         }
 
     }

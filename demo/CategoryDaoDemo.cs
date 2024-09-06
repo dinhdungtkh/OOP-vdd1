@@ -1,5 +1,5 @@
 ﻿using dao;
-using OOP_dung.vd.enitity;
+using OOP_dung.vd.entity;
 
 namespace demo
 
@@ -50,7 +50,7 @@ namespace demo
 
         public void findByIdTest()
         {
-            Category category = democategoryDAO.findById(11);
+            Category category = democategoryDAO.FindById(11);
 
             if (category != null)
             {

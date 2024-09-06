@@ -2,7 +2,7 @@ namespace dao
 
 {
 
-    using OOP_dung.vd.enitity;
+    using OOP_dung.vd.entity;
 
     public enum tableName
     {

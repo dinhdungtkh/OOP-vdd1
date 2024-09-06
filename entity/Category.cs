@@ -1,6 +1,6 @@
 using System;
 
-namespace OOP_dung.vd.enitity
+namespace OOP_dung.vd.entity
 {
     public class Category : Base 
     {
@@ -16,6 +16,9 @@ namespace OOP_dung.vd.enitity
             name = _name;
         }
 
-
+        public string GetCategoryInfo()
+        {
+            return $"{id}: {name}";
+        }
     }
 }

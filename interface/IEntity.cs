@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_dung.vd.enitity
+namespace _interface
+    
 {
-    public class CommonFunc
+    public interface IEntity
     {
-        public static string product = "product";
-
+        int Id { get; set; }
+        void Display();
     }
 }

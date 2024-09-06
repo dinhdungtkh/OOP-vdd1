@@ -1,5 +1,5 @@
 ﻿using dao;
-using OOP_dung.vd.enitity;
+using OOP_dung.vd.entity;
 
 namespace OOP_dung.vd.dao
 {
@@ -16,7 +16,7 @@ namespace OOP_dung.vd.dao
             return db.DeleteTable(tableName.accessory, row);
         }
 
-        public override Accessory findById(int id)
+        public override Accessory FindById(int id)
         {
             var accessoryID = db.SelectTable(tableName.accessory);
 
@@ -31,7 +31,7 @@ namespace OOP_dung.vd.dao
             return null;
         }
 
-        public override List<Accessory> findAll()
+        public override List<Accessory> FindAll()
         {
             return db.SelectTable(tableName.accessory);
         }
