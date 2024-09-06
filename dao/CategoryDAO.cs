@@ -12,14 +12,14 @@ namespace dao
         }
         public void Insert(object row)
         {
-            db.InsertTable("category", row);
+            db.InsertTable(tableName.category, row);
         }
 
-        public void Update(object row) { db.UpdateTable("category", row); }
-        public bool Delete(object row) { return db.DeleteTable("category", row); }
-        public  List<Category> FindAll()
+        public void Update(object row) { db.UpdateTable(tableName.category, row); }
+        public bool Delete(object row) { return db.DeleteTable(tableName.category, row); }
+        public List<Category> FindAll()
         {
-            return db.SelectTable("Category");
+            return db.SelectTable(tableName.category);
         }
 
         public dynamic findById(string name)

@@ -17,16 +17,16 @@ namespace demo
         {
             for (int i = 0; i < 10; i++)
             {
-                db.InsertTable("product", new Product(i, $"Product {i}"));
-                db.InsertTable("category", new Category(i, $"Category {i}"));
-                db.InsertTable("accessory", new Accessory(i, $"Accessory {i}"));
+                db.InsertTable(tableName.product, new Product(i, $"Product {i}"));
+                db.InsertTable(tableName.accessory, new Category(i, $"Category {i}"));
+                db.InsertTable(tableName.accessory, new Accessory(i, $"Accessory {i}"));
             }
         }
 
         public void InsertTableTest()
         {
             var newProduct = new { id = 5, name = "New Product", categoryId = 3 };
-            int index = db.InsertTable("product", newProduct);
+            int index = db.InsertTable(tableName.product, newProduct);
             Console.WriteLine(newProduct.id + " " + newProduct.name + " " + newProduct.categoryId);
             Console.WriteLine($"Inserted Product at index: {index}");
 
@@ -34,38 +34,38 @@ namespace demo
 
         public void SelectTableTest()
         {
-            var data = db.SelectTable("product");
-            var categorydata = db.SelectTable("category");
-            var accessorydata = db.SelectTable("accessory");
+            var data = db.SelectTable(tableName.product);
+            var categorydata = db.SelectTable(tableName.category);
+            var accessorydata = db.SelectTable(tableName.accessory);
 
-            PrintTableTest("product", data);
-            PrintTableTest("category", categorydata);
-            PrintTableTest("accessory", accessorydata);
+            PrintTableTest(tableName.product, data);
+            PrintTableTest(tableName.category, categorydata);
+            PrintTableTest(tableName.accessory, accessorydata);
         }
 
         public void UpdateTableTest()
         {
-            db.UpdateTable("product", new Product(2, "Product editted", 3));
+            db.UpdateTable(tableName.product, new Product(2, "Product editted", 3));
             db.UpdateTableById(3, new Accessory(2, "Accessory new"));
         }
 
         public void DeleteTableTest()
         {
-            db.DeleteTable("product", new Product(1));
-            // db.DeleteTable("product", new Product(1, "Product 1"));
+            db.DeleteTable(tableName.product, new Product(1));
+            // db.DeleteTable(tableName.product, new Product(1, "Product 1"));
         }
 
         public void TruncateTableTest()
         {
-            db.TruncateTable("product");
+            db.TruncateTable(tableName.product);
             Console.WriteLine("Truncated Product table.");
         }
 
-        public void PrintTableTest(string tableName, dynamic data)
+        public void PrintTableTest(tableName name, dynamic data)
         {
-            switch (tableName)
+            switch (name)
             {
-                case "product":
+                case tableName.product:
 
                     List<Product> dataProd = (List<Product>)data;
                     Console.WriteLine("-Product-");
@@ -75,7 +75,7 @@ namespace demo
                             Console.WriteLine("id: " + product.id + " product name: " + product.name + " categoryID " + product.categoryId);
                     }
                     return;
-                case "category":
+                case tableName.category:
                     List<Category> dataCategory = (List<Category>)data;
                     Console.WriteLine("-Category-");
                     foreach (Category category in dataCategory)
@@ -84,7 +84,7 @@ namespace demo
                             Console.WriteLine("id: " + category.id + " category name: " + category.name);
                     }
                     return;
-                case "accessory":
+                case tableName.accessory:
                     List<Accessory> dataAccessory = (List<Accessory>)data;
                     Console.WriteLine("-Accessory");
                     foreach (Accessory accessory in dataAccessory)
@@ -98,17 +98,17 @@ namespace demo
             }
         }
 
-        public static void Main(string[] args)
-        {
+        //public static void Main(string[] args)
+        //{
 
-            DatabaseDemo databaseDemo = new DatabaseDemo();
-            databaseDemo.InitDatabase();
-            databaseDemo.InsertTableTest();
-            databaseDemo.UpdateTableTest();
-            databaseDemo.DeleteTableTest(); ;
-            databaseDemo.SelectTableTest();
-            databaseDemo.TruncateTableTest();
-            databaseDemo.SelectTableTest();
-        }
+        //    DatabaseDemo databaseDemo = new DatabaseDemo();
+        //    databaseDemo.InitDatabase();
+        //    databaseDemo.InsertTableTest();
+        //    databaseDemo.UpdateTableTest();
+        //    databaseDemo.DeleteTableTest(); ;
+        //    databaseDemo.SelectTableTest();
+        //    databaseDemo.TruncateTableTest();
+        //    databaseDemo.SelectTableTest();
+        //}
     }
 }

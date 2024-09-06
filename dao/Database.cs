@@ -1,16 +1,19 @@
-using OOP_dung.vd.enitity;
-public enum tableName
-{
-    product,
-    category,
-    accessory,
-}
-
 namespace dao
+
 {
 
+    using OOP_dung.vd.enitity;
+    using System.Diagnostics;
+
+    public enum tableName
+    {
+        product,
+        category,
+        accessory,
+    }
     public class Database
     {
+        
         // private static List<Product> productTable = new List<Product>();
         public List<Product> productTable = new List<Product>();
         public static List<Category> categoryTable = new List<Category>();
@@ -30,17 +33,18 @@ namespace dao
             }
         }
 
-        public int InsertTable(string name, object row)
+        public int InsertTable(tableName name, object row)
         {
+
             switch (name)
             {
-                case "product":
+                case tableName.product:
                     productTable.Add(row as Product);
                     return productTable.Count;
-                case "category":
+                case tableName.category:
                     categoryTable.Add(row as Category);
                     return categoryTable.Count;
-                case "accessory":
+                case tableName.accessory:
                     accessoryTable.Add(row as Accessory);
                     return accessoryTable.Count;
                 default:
@@ -48,26 +52,26 @@ namespace dao
             }
         }
 
-        public dynamic SelectTable(string name)
+        public dynamic SelectTable(tableName name)
         {
             switch (name)
             {
-                case "product":
+                case tableName.product:
                     return productTable;
-                case "category":
+                case tableName.category:
                     return categoryTable;
-                case "accessory":
+                case tableName.accessory:
                     return accessoryTable;
                 default:
                     throw new ArgumentException("Invalid table name");
             }
         }
 
-        public void UpdateTable(string name, object row)
+        public void UpdateTable(tableName name, object row)
         {
             switch (name)
             {
-                case "product":
+                case tableName.product:
                     Product updatedProduct = (Product)row;
                     if (updatedProduct != null)
                     {
@@ -81,7 +85,7 @@ namespace dao
                         }
                     }
                     throw new ArgumentException("Invalid product name");
-                case "category":
+                case tableName.category:
                     Category updatedCategory = (Category)row;
                     if (updatedCategory != null)
                     {
@@ -95,7 +99,7 @@ namespace dao
                         }
                     }
                     throw new ArgumentException("Invalid Category name");
-                case "accessory":
+                case tableName.accessory:
                     Accessory updatedAccessory = (Accessory)row;
                     if (updatedAccessory != null)
                     {
@@ -113,11 +117,11 @@ namespace dao
             }
         }
 
-        public bool DeleteTable(string name, object row)
+        public bool DeleteTable(tableName name, object row)
         {
             switch (name)
             {
-                case "product":
+                case tableName.product:
                     Product productToRemove = (Product)row;
                     if (productToRemove != null)
                     {
@@ -132,7 +136,7 @@ namespace dao
 
                     }
                     return false;
-                case "category":
+                case tableName.category:
                     Category categoryToRemove = (Category)row;
                     if (categoryToRemove != null)
                     {
@@ -147,7 +151,7 @@ namespace dao
 
                     }
                     return false;
-                case "accessory":
+                case tableName.accessory:
                     Accessory accessoryToRemove = (Accessory)row;
                     if (accessoryToRemove != null)
                     {
@@ -171,24 +175,58 @@ namespace dao
 
         public void UpdateTableById(int id, object row)
         {
-            switch (id)
-            {
 
-                default: throw new ArgumentException("Invalid table name");
+            if (row is Product)
+            {
+                Product updatedProduct = (Product)row;
+                for (int i = 0; i < productTable.Count; i++)
+                {
+                    if (productTable[i].id == id)
+                    {
+                        productTable[i] = updatedProduct;
+                        return;
+                    }
+                }
             }
+            else if (row is Category)
+            {
+                Category category = (Category)row;
+                for (int i = 0; i < categoryTable.Count; i++)
+                {
+                    if (categoryTable[i].id == id)
+                    {
+                        categoryTable[i] = category;
+                        return;
+                    }
+                }
+            }
+            else if (row is Accessory)
+            {
+                Accessory accessory = (Accessory)row;
+                for (int i = 0; i < accessoryTable.Count; i++)
+                {
+                    if (accessoryTable[i].id == id)
+                    {
+                        accessoryTable[i] = accessory;
+                        return;
+                    }
+                }
+            }
+
+
         }
 
-        public void TruncateTable(string name)
+        public void TruncateTable(tableName name)
         {
-            switch (name.ToLower())
+            switch (name)
             {
-                case "product":
+                case tableName.product:
                     productTable.Clear();
                     break;
-                case "category":
+                case tableName.category:
                     categoryTable.Clear();
                     break;
-                case "accessory":
+                case tableName.accessory:
                     accessoryTable.Clear();
                     break;
                 default:
