@@ -85,23 +85,23 @@ namespace OOP_dung.vd.demo
             foreach (Product product in dataProduct)
             {
                 if (product != null)
-                    Console.WriteLine("id: " + product.id + " Product name: " + product.name + "Category ID " + product.categoryId);
+                    Console.WriteLine("id: " + product.id + " Product name: " + product.name + " Category ID " + product.categoryId);
             }
         }
 
-        public static void Main(string[] args)
-        {
+        //public static void Main(string[] args)
+        //{
 
-            ProductDaoDemo demo = new ProductDaoDemo();
-            demo.insertTest();
-            demo.updateTest();
-            demo.deleteTest();
-            demo.findByIdTest();
-            demo.FindByNameTest();
-            demo.findAllTest();
-            Console.ReadLine();
+        //    ProductDaoDemo demo = new ProductDaoDemo();
+        //    demo.insertTest();
+        //    demo.updateTest();
+        //    demo.deleteTest();
+        //    demo.findByIdTest();
+        //    demo.FindByNameTest();
+        //    demo.findAllTest();
+        //    Console.ReadLine();
 
-        }
+        //}
 
     }
 }

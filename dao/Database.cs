@@ -3,7 +3,6 @@ namespace dao
 {
 
     using OOP_dung.vd.enitity;
-    using System.Diagnostics;
 
     public enum tableName
     {
@@ -11,23 +10,28 @@ namespace dao
         category,
         accessory,
     }
-    public class Database
+    sealed class Database
     {
-        
-        // private static List<Product> productTable = new List<Product>();
+
         public List<Product> productTable = new List<Product>();
         public List<Category> categoryTable = new List<Category>();
         public List<Accessory> accessoryTable = new List<Accessory>();
 
         private static Database instance;
 
+        private static readonly object _lock = new object(); 
         public static Database Instants
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Database();
+                    lock(_lock)
+                    {
+                        if (instance == null) 
+                        { instance = new Database(); }
+                    }
+                  
                 }
                 return instance;
             }

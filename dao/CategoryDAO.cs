@@ -1,5 +1,4 @@
 ﻿using OOP_dung.vd.enitity;
-using System.Collections.Immutable;
 
 namespace dao
 {
@@ -23,11 +22,12 @@ namespace dao
             return db.SelectTable(tableName.category);
         }
 
-        public Category findById(int id)  
+        public Category findById(int id)
         {
-            var categoryID =  db.SelectTable(tableName.category);
+            var categoryID = db.SelectTable(tableName.category);
 
-            for (int i = 0; i < categoryID.Count; i++) {
+            for (int i = 0; i < categoryID.Count; i++)
+            {
                 if (categoryID[i].id == id)
                 {
                     return categoryID[i];
